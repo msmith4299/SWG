@@ -1,0 +1,102 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a3a97/fast && /usr/bin/make -f CMakeFiles/cmTC_a3a97.dir/build.make CMakeFiles/cmTC_a3a97.dir/build
+make[1]: Entering directory '/home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a3a97.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_a3a97.dir/src.c.o   -c /home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a3a97
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a3a97.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_a3a97.dir/src.c.o  -o cmTC_a3a97 
+/usr/bin/ld: CMakeFiles/cmTC_a3a97.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_a3a97.dir/build.make:87: cmTC_a3a97] Error 1
+make[1]: Leaving directory '/home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_a3a97/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test HAVE_CXX_ATOMICS_WITHOUT_LIB failed with the following output:
+Change Dir: /home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d3b3d/fast && /usr/bin/make -f CMakeFiles/cmTC_d3b3d.dir/build.make CMakeFiles/cmTC_d3b3d.dir/build
+make[1]: Entering directory '/home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d3b3d.dir/src.cxx.o
+/usr/bin/c++    -DHAVE_CXX_ATOMICS_WITHOUT_LIB -std=c++11   -o CMakeFiles/cmTC_d3b3d.dir/src.cxx.o -c /home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_d3b3d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d3b3d.dir/link.txt --verbose=1
+/usr/bin/c++   -DHAVE_CXX_ATOMICS_WITHOUT_LIB -std=c++11    CMakeFiles/cmTC_d3b3d.dir/src.cxx.o  -o cmTC_d3b3d 
+/usr/bin/ld: CMakeFiles/cmTC_d3b3d.dir/src.cxx.o: in function `std::atomic<test_type>::compare_exchange_strong(test_type&, test_type, std::memory_order, std::memory_order)':
+src.cxx:(.text._ZNSt6atomicI9test_typeE23compare_exchange_strongERS0_S0_St12memory_orderS3_[_ZNSt6atomicI9test_typeE23compare_exchange_strongERS0_S0_St12memory_orderS3_]+0x81): undefined reference to `__atomic_compare_exchange'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_d3b3d.dir/build.make:87: cmTC_d3b3d] Error 1
+make[1]: Leaving directory '/home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_d3b3d/fast] Error 2
+
+
+Source file was:
+
+	#include <atomic>
+	struct test_type { float x[3]; };
+	std::atomic<test_type> atom;
+	test_type old;
+	test_type newval;
+	int main() {
+	newval.x[2] = 3;
+	return atom.compare_exchange_strong(old, newval);
+	}
+	
+Performing C++ SOURCE FILE Test CxxFlag-Wno-return-std-move failed with the following output:
+Change Dir: /home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0865b/fast && /usr/bin/make -f CMakeFiles/cmTC_0865b.dir/build.make CMakeFiles/cmTC_0865b.dir/build
+make[1]: Entering directory '/home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0865b.dir/src.cxx.o
+/usr/bin/c++    -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -DCxxFlag-Wno-return-std-move   -Wno-return-std-move -o CMakeFiles/cmTC_0865b.dir/src.cxx.o -c /home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+cc1plus: warning: unrecognized command line option '-Wno-return-std-move'
+Linking CXX executable cmTC_0865b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0865b.dir/link.txt --verbose=1
+/usr/bin/c++   -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -DCxxFlag-Wno-return-std-move    CMakeFiles/cmTC_0865b.dir/src.cxx.o  -o cmTC_0865b 
+make[1]: Leaving directory '/home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CxxFlag-fcolor-diagnostics failed with the following output:
+Change Dir: /home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_98b00/fast && /usr/bin/make -f CMakeFiles/cmTC_98b00.dir/build.make CMakeFiles/cmTC_98b00.dir/build
+make[1]: Entering directory '/home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_98b00.dir/src.cxx.o
+/usr/bin/c++    -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Wno-implicit-fallthrough -Wno-class-memaccess -DCxxFlag-fcolor-diagnostics   -fcolor-diagnostics -o CMakeFiles/cmTC_98b00.dir/src.cxx.o -c /home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-fcolor-diagnostics'
+make[1]: *** [CMakeFiles/cmTC_98b00.dir/build.make:66: CMakeFiles/cmTC_98b00.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/msmith4299/SWG/Core3/MMOCoreORB/bin/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_98b00/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
