@@ -149,9 +149,11 @@ Core3 = {
 	------TRE config------
 	TrePath = "/home/msmith4299/SWGEmuTreFiles/",
 	TreFiles = {
+		"BankSlotMod.tre",
+		"skills_update.tre",
 		"default_patch.tre",
-                "patch_sku1_14_00.tre",
-                "patch_14_00.tre",
+		"patch_sku1_14_00.tre",
+		"patch_14_00.tre",
                 "patch_sku1_13_00.tre",
                 "patch_13_00.tre",
                 "patch_sku1_12_00.tre",
@@ -201,7 +203,7 @@ Core3 = {
                 "data_music_00.tre",
                 "hotfix_13_1_00.tre",
                 "hotfix_sku1_12_1_00.tre",
-                "bottom.tre"
+		"bottom.tre"
 	},
 
 	------Status Server Config------
