@@ -1142,10 +1142,13 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 
 			Locker buffLock(buff, playerCreature);
 			playerCreature->removeBuff(buff);
-		}
-	}
+        }
+    }
 
-	return recoveryTime;
+    if (recoveryTime < 15)
+        recoveryTime = 15;
+
+    return recoveryTime;
 }
 
 int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition, bool isCombatAction) {

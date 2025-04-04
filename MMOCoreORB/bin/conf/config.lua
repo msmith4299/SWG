@@ -149,7 +149,6 @@ Core3 = {
 	------TRE config------
 	TrePath = "/home/msmith4299/SWGEmuTreFiles/",
 	TreFiles = {
-		"BankSlotMod.tre",
 		"skills_update.tre",
 		"default_patch.tre",
 		"patch_sku1_14_00.tre",
@@ -246,7 +245,7 @@ Core3 = {
 	UnloadContainers = 1, -- Whether to unload container contents from RAM after the container hasn't been accessed for a time
 
 	------Server Config------
-	CharacterBuilderEnabled = "true",
+	CharacterBuilderEnabled = "false",
 	AutoReg = 1,
 
 	------TOS Config------
