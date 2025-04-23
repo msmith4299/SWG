@@ -1,0 +1,262 @@
+[33mcommit a5c897d19ca317ca2f5117f265daf11ad7bf432c[m[33m ([m[1;31mupstream/unstable[m[33m)[m
+Merge: 5cb4a5f980 c7277a2d9a
+Author: Hakry <hakry@swgemu.com>
+Date:   Sat Apr 5 21:16:46 2025 +0000
+
+    Merge "[fixed] unprogrammed droid command chips can no longer be added to droids or flight computers [fixed] droid command cleanup from player on landing" into unstable
+
+[33mcommit 5cb4a5f9801be44d962804932a9a73ff755a4f25[m
+Merge: f84d0e8d56 51b2a7bb1b
+Author: Hakry <hakry@swgemu.com>
+Date:   Sat Apr 5 21:14:23 2025 +0000
+
+    Merge "[fixed] ships can no longer be traded when unpacked" into unstable
+
+[33mcommit c7277a2d9aebf60e4b72dc7a96dfd97cbcf38a79[m
+Author: Halyn <cneumi@hotmail.com>
+Date:   Sat Apr 5 15:08:03 2025 -0500
+
+    [fixed] unprogrammed droid command chips can no longer be added to droids or flight computers
+    [fixed] droid command cleanup from player on landing
+    
+    Change-Id: Ica507150af05ed840f6f72816070dcde6fc92570
+
+[33mcommit 51b2a7bb1bca480b3278cd6258d52adea8f59ebc[m
+Author: Halyn <cneumi@hotmail.com>
+Date:   Sat Apr 5 16:03:19 2025 -0500
+
+    [fixed] ships can no longer be traded when unpacked
+    
+    Change-Id: Iaf689cdd886515d95560a9e4c6c2b9a560df1ba7
+
+[33mcommit f84d0e8d56aebe5345c5868f914dafce78213060[m
+Author: Smoki <swgsmoki@gmail.com>
+Date:   Sat Apr 5 15:54:45 2025 -0400
+
+    [fixed] fishing bait loot quantity uniform randomization - Mantis #9088
+    
+    Change-Id: I7c554124a51cefdc37281715df6d9bc2d0dd47b8
+
+[33mcommit 1367a496c79ec25a75e514fbee92410997bd4522[m
+Author: hakry <hakry@swgemu.com>
+Date:   Fri Apr 4 17:42:07 2025 -0400
+
+    [fixed] fish resources from fish filet having zero quantity - Mantis #8442
+    
+    Change-Id: I378ed9b277c4ef8be4413f81f2eeacd57c5b8018
+
+[33mcommit 41b81fc1a8e7ab9231f7eb601c8658383797f7c8[m
+Author: hakry <hakry@swgemu.com>
+Date:   Fri Apr 4 12:24:20 2025 -0400
+
+    [fixed] potenial instances player could get stuck with fishing state mood - Mantis #8503
+    [fixed] unequipping fish pole while fishing now stops the player from continuing to fish - Mantis #8503
+    [fixed] combat, incapacitation and death now end fishing session for player - Mantis #9096
+    
+    Change-Id: I9ad4dfd1ba1064b661979c532b6796d95fd45270
+
+[33mcommit b703f9b52cc04a0c88a75bb7dd7587a7c121f3fc[m
+Author: hakry <hakry@swgemu.com>
+Date:   Thu Apr 3 18:48:48 2025 -0400
+
+    [fixed] player ability list delta updates to immediately show newly earned abilities - Mantis #9097
+    
+    Change-Id: I040c93d5fd002a7d69417978eda1c5519f64d1f4
+
+[33mcommit efa02d74cc2859e7cae1cce97e640933e489f6d7[m
+Author: hakry <hakry@swgemu.com>
+Date:   Thu Apr 3 13:46:50 2025 -0400
+
+    [fixed] swimming state not properly being applied to players when mounted on vehicles and pets in water - Mantis #9002
+    
+    Change-Id: I87beb7984679d7a243b09a219690f41a2cc2e010
+
+[33mcommit 9b6ad584d9df17811dbf55f1d0bd34f782445470[m
+Author: hakry <hakry@swgemu.com>
+Date:   Wed Apr 2 14:42:27 2025 -0400
+
+    [fixed] ability to generate bomb droid while swimming, in combat, mounted and feigning Death - Mantis #9100
+    [fixed] players being able to use the detonation commbat while swimming, in combat, mounted and feigning death - Mantis #9100
+    [fixed] befault bomb droid followother command to be set to chase
+    
+    Change-Id: I3eec79310a6fb31cd549d804f9c5475867e09e56
+
+[33mcommit 380cffa15b820b317fcb72b43dcca4a0af8cf9f4[m
+Author: hakry <hakry@swgemu.com>
+Date:   Tue Apr 1 00:22:41 2025 -0400
+
+    [fixed] bomb droids to receive pvp damage reduction - Mantis #8362
+    [added] spill damage for bomb droids - Mantis #8362
+    [fixed] bomb droid damage to be individually calculated per target - Mantis #8362
+    [fixed] bomb droids being able to follow attackable targets
+    
+    Change-Id: I175c159d4e969cd2418fa2c23550539835a1d773
+
+[33mcommit 55f88ce9e72eb021abdd3b857dddd93c963debc0[m
+Author: hakry <hakry@swgemu.com>
+Date:   Mon Mar 31 23:43:34 2025 -0400
+
+    [format] cleaned up snoop command
+    [added] modifiers input to snoop command
+    
+    Change-Id: I775c741a9ce4d689be6571b6386d3d5f287870e8
+
+[33mcommit 522a8eac1784b24104a3e30b80c1b0a3fe0b6c80[m
+Author: Smoki <swgsmoki@gmail.com>
+Date:   Mon Mar 31 15:43:53 2025 -0400
+
+    [added] player ship targetID and targetSlot callback updates
+    
+    Change-Id: I850e0cbf24ac975e6458a89e25b088a5fbf10522
+
+[33mcommit 60c44cd41d81eb5bcbea24b1b9cf5e5aed0a0afd[m
+Author: hakry <hakry@swgemu.com>
+Date:   Fri Mar 28 16:19:06 2025 -0400
+
+    [fixed] missing snapshot appearance template no longer causes index out of bounds
+    
+    Change-Id: I523db317b85c1121be88a6f732ffa554e5515b6e
+
+[33mcommit ec2d9aa63f141677865ccd9b443cadf910741986[m
+Author: Halyn <cneumi@hotmail.com>
+Date:   Tue Mar 25 22:20:45 2025 -0500
+
+    [added] astromech certification functionality
+    [fixed] flight computer deeds now show appropriate fields
+    
+    Change-Id: I73d84cf3fbca774aac7be421a5eb528fccaac565
+
+[33mcommit e2cdc8bf0a3ecfc5a7910955ccf7413c3c7c8ba0[m
+Author: Halyn <cneumi@hotmail.com>
+Date:   Mon Mar 24 10:48:52 2025 -0500
+
+    [added] droid command chip programming
+    
+    Change-Id: I78fbbf70433927acc526d128468da529e93fdb1c
+
+[33mcommit 563f9da5637974ae2d1035c326e53a5a9c39f015[m
+Merge: e18fd8f29d ffa2f46976
+Author: Hakry <hakry@swgemu.com>
+Date:   Fri Mar 21 20:59:09 2025 +0000
+
+    Merge "[added] shipAiAgent chassis speedRotationFactor delta updates" into unstable
+
+[33mcommit e18fd8f29d3407caec3f87769ad00b4494498284[m
+Author: hakry <hakry@swgemu.com>
+Date:   Fri Mar 21 12:33:13 2025 -0400
+
+    [moved] manufacturing schematic data size onto parent intangible
+    [fixed] manufacturing schematics causing empty droid programs to show on droids
+    
+    Change-Id: I3068103bcd37c92b63469bc1937efff653e778a5
+
+[33mcommit ffa2f46976ca6f0891512f79e57350ebecf87ca4[m
+Author: Smoki <swgsmoki@gmail.com>
+Date:   Thu Mar 20 13:51:35 2025 -0400
+
+    [added] shipAiAgent chassis speedRotationFactor delta updates
+    
+    Change-Id: Ib468ef53fde13001f97b38ce871517b1375a34a3
+
+[33mcommit 53504f03d264234a0906126dfb2070eec95cc60e[m
+Author: hakry <hakry@swgemu.com>
+Date:   Thu Mar 20 14:01:56 2025 -0400
+
+    [format] moved sceneobject types into proper not in client location
+    
+    Change-Id: I9aee7661a4d19b6509f27e1a2063f276287290cb
+
+[33mcommit 208082fc288af9c8156b5c2598dd09fb6cb77caf[m
+Author: Halyn <cneumi@hotmail.com>
+Date:   Wed Mar 19 12:58:29 2025 -0500
+
+    [added] space combat droid commands
+    
+    Change-Id: I76416f6fdb77a7989bb2c793f90c9d536be707d1
+
+[33mcommit 56ae7d252f79392884f16820c601b317ba0205e3[m
+Merge: 2584f5ab9c f6c69d575b
+Author: Hakry <hakry@swgemu.com>
+Date:   Sun Mar 16 22:35:21 2025 +0000
+
+    Merge "[removed] warning message in console when mood type is not found" into unstable
+
+[33mcommit f6c69d575b276432ce7f97cf4b7a0e29b8d2c5cf[m
+Author: hakry <hakry@swgemu.com>
+Date:   Sun Mar 16 18:26:56 2025 -0400
+
+    [removed] warning message in console when mood type is not found
+    
+    Change-Id: I2f11d2390e04c24658e44d63134347cf7bf0222b
+
+[33mcommit 2584f5ab9c6b4bbe6f0df7b4e1ffb4abc779253a[m
+Author: Smoki <swgsmoki@gmail.com>
+Date:   Sat Mar 15 16:23:28 2025 -0400
+
+    [added] chassis slip rate to shipAiAgent flight dynamics model
+    
+    Change-Id: I65a485ce9013363d9796ee1dba179a6c8c687174
+
+[33mcommit 9b1cd44b1d05598706dee38b756fce5d4abd245e[m
+Merge: e4c81c408d 5ded3ef482
+Author: Hakry <hakry@swgemu.com>
+Date:   Fri Mar 14 23:35:44 2025 +0000
+
+    Merge "[added] ship component targetable priority to space combat" into unstable
+
+[33mcommit e4c81c408d71d9cf270ab9122b1e37055ce58165[m
+Author: hakry <hakry@swgemu.com>
+Date:   Thu Mar 13 19:03:50 2025 -0400
+
+    [fixed] entry intro structures removing template modifiers applied from wearables
+    [modified] cleaned up force generation task logic
+    
+    Change-Id: Ie72d374b186827bea1791a17e2302de1269cb3cc
+
+[33mcommit 5ded3ef482fd1d60121431fe2c7eb447677101c1[m
+Author: Smoki <swgsmoki@gmail.com>
+Date:   Mon Mar 10 23:24:16 2025 -0400
+
+    [added] ship component targetable priority to space combat
+    
+    Change-Id: Ib696e18d310565bc67ea9e4a68d508ef136327de
+
+[33mcommit 1a533fec7ce50c5dc3b5f6df82fda2513d3b8c63[m
+Merge: ebfd56fcbe 3e291527f2
+Author: Hakry <hakry@swgemu.com>
+Date:   Mon Mar 10 16:42:30 2025 +0000
+
+    Merge "[fixed] skill mod manager verification of modifiers to also check mods applied fron object templates" into unstable
+
+[33mcommit 3e291527f239ae7f7734a5f25f2776e00e0a3530[m
+Author: hakry <hakry@swgemu.com>
+Date:   Mon Mar 10 12:25:08 2025 -0400
+
+    [fixed] skill mod manager verification of modifiers to also check mods applied fron object templates
+    
+    Change-Id: I1566345f972ee57caa4eee351eb4f87c30b20071
+
+[33mcommit ebfd56fcbe85e4a8c59f42e48f7c9abbf197ee43[m
+Author: Smoki <swgsmoki@gmail.com>
+Date:   Sun Mar 9 21:21:30 2025 -0400
+
+    [added] ship component targetable deltaBitArray updates
+    
+    Change-Id: I89d153ec3ddbaa2b627bd53e1b99f2e362c22fd2
+
+[33mcommit 0b36d501ac3e603c1433099b7ef03a617ff3d53d[m
+Author: hakry <hakry@swgemu.com>
+Date:   Wed Mar 5 18:42:29 2025 -0500
+
+    [fixed] droid module alm to display datapad storage info
+    
+    Change-Id: Ibe282334dbb844173696778cf8b03fa33fcbbbc0
+
+[33mcommit 6f21f33447e803606b999fbe51da1d06adbf2e96[m
+Author: hakry <hakry@swgemu.com>
+Date:   Mon Mar 3 12:29:48 2025 -0500
+
+    [added] astromech programming using space commands earned from skill boxes
+    [added] skill manager to load droid program sizes from iffs
+    
+    Change-Id: I2a42b883ee9518dad59676426f6a63630980dacd

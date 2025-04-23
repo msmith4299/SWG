@@ -96,6 +96,11 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	foodFillingMax = 100;
 	drinkFillingMax = 100;
 
+    // Force maximumLots to 100 for all characters
+    if (maximumLots != 100) {
+        maximumLots = 100;
+    }
+
 	duelList.setNoDuplicateInsertPlan();
 	chatRooms.setNoDuplicateInsertPlan();
 	ownedChatRooms.setNoDuplicateInsertPlan();
