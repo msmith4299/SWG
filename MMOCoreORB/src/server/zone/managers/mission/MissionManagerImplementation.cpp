@@ -203,7 +203,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	if (missionBag == nullptr)
 		return;
 
-	int maximumNumberOfItemsInMissionBag = 12;
+	int maximumNumberOfItemsInMissionBag = 60;
 
 
 	if (enableFactionalCraftingMissions) {
@@ -265,7 +265,7 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 	}
 
 	//Limit to two missions (only one of them can be a bounty mission)
-	if (missionCount >= 2 || (hasBountyMission && mission->getTypeCRC() == MissionTypes::BOUNTY)) {
+	if (missionCount >= 5 || (hasBountyMission && mission->getTypeCRC() == MissionTypes::BOUNTY)) {
 		StringIdChatParameter stringId("mission/mission_generic", "too_many_missions");
 		player->sendSystemMessage(stringId);
 		return;
@@ -588,9 +588,9 @@ void MissionManagerImplementation::randomizeGeneralTerminalMissions(CreatureObje
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
-		if (i < 6) {
+		if (i < 30) {
 			randomizeGenericDestroyMission(player, mission, Factions::FACTIONNEUTRAL);
-		} else if (i < 12) {
+		} else if (i < 60) {
 			randomizeGenericDeliverMission(player, mission, Factions::FACTIONNEUTRAL);
 		}
 
@@ -617,9 +617,9 @@ void MissionManagerImplementation::randomizeArtisanTerminalMissions(CreatureObje
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
-		if (i < 6) {
+		if (i < 30) {
 			randomizeGenericSurveyMission(player, mission, Factions::FACTIONNEUTRAL);
-		} else if (i < 12) {
+		} else if (i < 60) {
 			randomizeGenericCraftingMission(player, mission, Factions::FACTIONNEUTRAL);
 		}
 
@@ -646,9 +646,9 @@ void MissionManagerImplementation::randomizeEntertainerTerminalMissions(Creature
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
-		if (i < 6) {
+		if (i < 30) {
 			randomizeGenericEntertainerMission(player, mission, Factions::FACTIONNEUTRAL, MissionTypes::DANCER);
-		} else if (i < 12) {
+		} else if (i < 60) {
 			randomizeGenericEntertainerMission(player, mission, Factions::FACTIONNEUTRAL, MissionTypes::MUSICIAN);
 		}
 
@@ -675,9 +675,9 @@ void MissionManagerImplementation::randomizeScoutTerminalMissions(CreatureObject
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
-		if (i < 6) {
+		if (i < 30) {
 			randomizeGenericReconMission(player, mission, Factions::FACTIONNEUTRAL);
-		} else if (i < 12) {
+		} else if (i < 60) {
 			randomizeGenericHuntingMission(player, mission, Factions::FACTIONNEUTRAL);
 		}
 
@@ -706,7 +706,7 @@ void MissionManagerImplementation::randomizeBountyTerminalMissions(CreatureObjec
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
-		if (i < 10) {
+		if (i < 30) {
 			randomizeGenericBountyMission(player, mission, Factions::FACTIONNEUTRAL, &potentialTargets);
 		}
 
@@ -874,7 +874,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setMissionNumber(randTexts);
 
 	mission->setStartPosition(startPos.getX(), startPos.getY(), zone->getZoneName());
-	mission->setCreatorName(nm->makeCreatureName());
+	mission->setCreatorName("Level: " + String::valueOf(diffDisplay));
 
 	mission->setMissionTargetName("@lair_n:" + lairTemplateObject->getName());
 	mission->setTargetTemplate(templateObject);
@@ -904,12 +904,27 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	else
 		messageDifficulty = "_hard";
 
-	if (lairTemplateObject->getMobType() == LairTemplate::NPC)
-		missionType = "_npc";
-	else
-		missionType = "_creature";
+	String groupSuffix;
 
-	mission->setMissionTitle("mission/mission_destroy_neutral" + messageDifficulty + missionType, "m" + String::valueOf(randTexts) + "t");
+	if (lairTemplateObject->getMobType() == LairTemplate::NPC) {
+		missionType = "_npc";
+		groupSuffix = " base.";
+		}	else {
+		missionType = "_creature";
+		groupSuffix = " lair.";
+		}
+
+		const VectorMap<String, int>* mobiles = lairTemplateObject->getMobiles();
+		String mobileName = "mysterious";
+		if (mobiles != nullptr && mobiles->size() > 0) {
+			mobileName = mobiles->elementAt(0).getKey();
+		}
+		if (mobileName.isEmpty() || mobileName == "mysterious") {
+			mobileName = faction == Factions::FACTIONIMPERIAL ? "rebel_soldier" : faction == Factions::FACTIONREBEL ? "imperial_soldier" : "mysterious";
+		}
+	
+	mission->setTemplateStrings(mobileName, groupSuffix);
+	mission->setMissionTitle("Mission", " A " + mobileName.replaceAll("_", " ") + groupSuffix, true);
 	mission->setMissionDescription("mission/mission_destroy_neutral" +  messageDifficulty + missionType, "m" + String::valueOf(randTexts) + "d");
 
 	switch (faction) {
@@ -1552,8 +1567,7 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 	debug() << "creator name " << creatorName;
 
 	mission->setMissionNumber(randTexts);
-	mission->setCreatorName(creatorName);
-
+	
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), playerZone->getZoneName());
 
 	mission->setMissionTargetName(creatureTemplate->getObjectName());
@@ -1573,10 +1587,13 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 		diffString = "hard";
 	}
 
-	int baseReward = 500 + (difficulty * 100 * randomLairSpawn->getMinDifficulty());
+	int baseReward = 100 + (difficulty * 100 * randomLairSpawn->getMinDifficulty());
 	mission->setRewardCredits(baseReward + System::random(100));
+	mission->setCreatorName("Level: " + String::valueOf(difficulty));
 	mission->setMissionDifficulty(difficulty);
-	mission->setMissionTitle("mission/mission_npc_hunting_neutral_" + diffString, "m" + String::valueOf(randTexts) + "t");
+	String groupSuffix = lairTemplate->getMobType() == LairTemplate::NPC ? " base." : " lair.";
+	mission->setMissionTitle("Mission:", " A " + mobileName.replaceAll("_", " ") + groupSuffix, true);
+	mission->setTemplateStrings(mobileName, groupSuffix);
 	mission->setMissionDescription("mission/mission_npc_hunting_neutral_" + diffString, "m" + String::valueOf(randTexts) + "o");
 
 	mission->setTypeCRC(MissionTypes::HUNTING);
@@ -1702,7 +1719,9 @@ void MissionManagerImplementation::generateRandomFactionalDestroyMissionDescript
 
 	int randomNumber = System::random(randomMax) + 1;
 
-	mission->setMissionTitle("mission/mission_destroy_" + difficultyString, "m" + String::valueOf(randomNumber) + "t");
+	String creatureName = mission->getTemplateString1().isEmpty() ? "unknown" : mission->getTemplateString1();
+	String suffix = " camp.";
+	mission->setMissionTitle("Mission:", " A " + creatureName.replaceAll("_", " ") + suffix, true);
 	mission->setMissionDescription("mission/mission_destroy_" +  difficultyString, "m" + String::valueOf(randomNumber) + "d");
 }
 
